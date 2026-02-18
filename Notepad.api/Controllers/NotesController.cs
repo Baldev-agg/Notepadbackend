@@ -30,7 +30,7 @@ public class NotesController : ControllerBase
         return await _context.Notes.Where(n => n.UserId == userId).ToListAsync();
     }
 
-
+    //Edit Notes
     [HttpPut("{Id}")]
     public async Task<IActionResult> EditNotes(int id, Note note)
     {
@@ -40,6 +40,7 @@ public class NotesController : ControllerBase
         return Ok();
     }
 
+    // Delete Notes
     [HttpDelete("{Id}")]
     public async Task<IActionResult> DeleteNote(int id)
     {
