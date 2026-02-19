@@ -25,7 +25,7 @@ public class NotesController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<Note>>> GetNotes(int userId) 
+    public async Task<ActionResult<IEnumerable<Note>>> GetNotes(int userId)
     {
         return await _context.Notes.Where(n => n.UserId == userId).ToListAsync();
     }
