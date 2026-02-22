@@ -5,7 +5,7 @@
 namespace Notepad.api.Migrations
 {
     /// <inheritdoc />
-    public partial class AddUserAndNoteLink : Migration
+    public partial class InitialFinalFix : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

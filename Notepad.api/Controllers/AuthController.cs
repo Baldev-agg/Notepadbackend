@@ -3,6 +3,7 @@ using Notepad.Api.Data;
 using Notepad.Api.Models;
 using Auth.Api.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Identity.Client;
 namespace Notepad.api.Controllers
 {
     [Route("api/[controller]")] // This attribute defines the route for the controller. The [controller] token will be replaced with the name of the controller, which is "Auth" in this case.
@@ -31,7 +32,16 @@ namespace Notepad.api.Controllers
 
             if (user == null) return Unauthorized("Invalid Email or Password");
 
-            return Ok(new { userId = user.Id, email = user.Email });
+            return Ok(new { userId = user.Id, email = user.Email, role = user.Role });
         }
+
+        [HttpGet("total-users")] // This attribute specifies that this action will handle GET requests to the "users" endpoint (e.g., /api/auth/users).
+        public async Task<IActionResult> GetAllUsers()
+        {
+            var count = await _context.Users.CountAsync();
+            return Ok(new { total = count });
+            //return Ok(new { message = "Logout SuccessFully" });
+        }
+
     }
 }
